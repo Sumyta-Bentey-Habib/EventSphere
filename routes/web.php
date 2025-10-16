@@ -14,6 +14,16 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
+// service page
+Route::get('/services', function () {
+    return view('services');
+})->name('services');
+
+// Contract page
+Route::get('/contract', function () {
+    return view('contract');
+})->name('contract');
+
 // Auth routes
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
@@ -41,3 +51,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/events/bookmarked', [EventController::class, 'bookmarked'])->name('events.bookmarked');
     Route::post('/events/{id}/bookmark', [EventController::class, 'bookmark'])->name('events.bookmark');
 });
+
+

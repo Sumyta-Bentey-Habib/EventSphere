@@ -18,7 +18,8 @@
 
     @include('components.navbar')
 
-    <section class="py-20 bg-gradient-to-r from-purple-100 via-white to-purple-100">
+    {{-- CHANGED: Background gradient to indigo-100 --}}
+    <section class="py-20 bg-gradient-to-r from-indigo-100 via-white to-indigo-100">
         <div class="max-w-6xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
 
             {{-- Image --}}
@@ -32,13 +33,15 @@
 
             {{-- Text Content --}}
             <div class="lg:w-1/2 flex flex-col justify-center space-y-6" data-aos="fade-left" data-aos-duration="1000">
-                <h2 class="text-5xl font-extrabold text-purple-600">About EventSphere</h2>
+                {{-- CHANGED: Heading color to indigo-600 --}}
+                <h2 class="text-5xl font-extrabold text-indigo-600">About EventSphere</h2>
                 <p class="text-lg text-gray-700 leading-relaxed">
                     EventSphere is your all-in-one platform to discover, organize, and enjoy amazing events. From concerts and workshops to corporate meetups, we help you make every event a success.
                 </p>
                 <p class="text-lg text-gray-700 leading-relaxed">
                     Our mission is to connect people with experiences that matter and help organizers manage their events smoothly. Join our growing community that celebrates creativity, learning, and connection.
                 </p>
+                {{-- CHANGED: Button color to indigo (primary is usually blue/indigo in Tailwind/DaisyUI) --}}
                 <a href="#"
                     class="btn btn-primary btn-lg w-max hover:scale-105 transition-transform duration-300"
                     data-aos="zoom-in" data-aos-duration="1000">Join Now</a>

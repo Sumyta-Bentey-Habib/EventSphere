@@ -15,6 +15,11 @@
     @include('components.navbar')
     @include('components.hero')
     @include('components.carousel')
+    @include('components.review')
+    @include('components.faq')
+    @include('components.statistics')
+    @include('components.newsletter')
+    @include('components.footer')
 
 </body>
 

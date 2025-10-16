@@ -24,6 +24,10 @@
                     <label class="label">Title</label>
                     <input type="text" name="title" class="input input-bordered" placeholder="Event Title" required>
                 </div>
+                <div class="form-control mb-3">
+                    <label class="label">Location</label>
+                    <input type="text" name="location" class="input input-bordered" placeholder="Event Location" required>
+                </div>
 
                 <div class="form-control mb-3">
                     <label class="label">Description</label>
