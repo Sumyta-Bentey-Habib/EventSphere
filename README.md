@@ -1,4 +1,4 @@
-# EventShere
+# EventSphere
 
 ## 📝 Overview
 **EventShere** is a Laravel-based event management platform where users can **create**, **browse**, and **bookmark** events seamlessly.  
