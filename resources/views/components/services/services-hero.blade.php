@@ -18,7 +18,7 @@
         <!-- Right Floating Image -->
         <div class="lg:w-1/2 flex justify-center lg:justify-end relative">
             <div class="relative rounded-[2rem] p-2 bg-gradient-to-br from-[#6C22E1] to-[#3A0F7E] shadow-2xl">
-                <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                <img src="{{ asset('images/others/image4.jpg') }}"
                      alt="Services Image"
                      class="rounded-[1.7rem] object-cover w-[500px] h-[500px] md:w-[550px] md:h-[550px]" />
             </div>

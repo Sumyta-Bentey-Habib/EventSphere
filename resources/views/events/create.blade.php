@@ -49,7 +49,7 @@
                 </div>
                 <textarea
                     name="description"
-                    placeholder="Event description here..."
+                    placeholder="Event description here include the location..."
                     class="textarea textarea-bordered w-full"
                     rows="4"
                     required

@@ -27,7 +27,7 @@
         {{-- Right Image --}}
         <div class="lg:w-1/2 flex justify-center lg:justify-end relative">
             <div class="relative rounded-[2rem] p-2 bg-gradient-to-br from-[#6C22E1] to-[#3A0F7E] shadow-2xl">
-                <img src="{{ asset('images/banner/hero.jpg') }}"
+                <img src="{{ asset('images/others/image3.jpg') }}"
                      alt="EventSphere Team Working"
                      class="rounded-[1.7rem] object-cover w-[550px] h-[550px]" />
             </div>

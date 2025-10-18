@@ -11,7 +11,7 @@
     <!-- Right Side Image (from background theme concept) -->
     <div class="w-full lg:w-1/2 flex justify-center">
       <img
-        src="{{ asset('images/banner/hero.jpg') }}"
+        src="{{ asset('images/banner/image1.jpg') }}"
         alt="Event Hero"
         class="w-full lg:w-4/5 max-w-lg rounded-2xl shadow-2xl border border-[#ffffff20]"
       />
@@ -37,16 +37,5 @@
         ✨ Explore Now
       </a>
     </div>
-  </div>
-
-  <!-- Floating chatbot button -->
-  <div class="fixed bottom-8 right-8 z-50 hidden md:block">
-    <button
-      class="p-3 rounded-full bg-gradient-to-r from-[#6C3EF8] to-[#A35CF8]
-      hover:scale-110 focus:outline-none focus:ring-4 focus:ring-purple-500/50
-      shadow-lg transition duration-300"
-    >
-      💬
-    </button>
   </div>
 </div>

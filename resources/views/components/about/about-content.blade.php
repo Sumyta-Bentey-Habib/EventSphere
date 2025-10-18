@@ -4,7 +4,7 @@
         {{-- Left: Image --}}
         <div class="relative flex justify-center lg:justify-start">
             <div class="p-1 rounded-[2rem] bg-gradient-to-br from-[#6C22E1] to-[#3A0F7E] shadow-2xl">
-                <img src="{{ asset('images/banner/hero.jpg') }}"
+                <img src="{{ asset('images/others/image2.jpg') }}"
                      alt="EventSphere Community"
                      class="rounded-[1.9rem] object-cover w-full h-full max-h-[400px]" />
             </div>
