@@ -18,55 +18,58 @@ $carouselItems = [
 ];
 @endphp
 
-<div class="relative max-w-6xl mx-auto mt-10">
-    <div id="carousel" class="relative overflow-hidden rounded-lg h-96">
+<div class="relative max-w-6xl mx-auto mt-16 px-4">
+    <!-- Carousel container -->
+    <div id="carousel" class="relative overflow-hidden rounded-3xl shadow-2xl border border-[#ffffff20] h-[28rem] bg-[#0E0A1A]">
         @foreach($carouselItems as $index => $item)
-        <div class="absolute inset-0 transition-opacity duration-1000 {{ $index === 0 ? 'opacity-100' : 'opacity-0' }}" data-slide="{{ $index }}">
-            <img src="{{ $item['img'] }}" class="w-full h-full object-cover" alt="{{ $item['title'] }}">
-            <div class="absolute inset-0 bg-black/40 flex items-center justify-center text-center p-5">
-                <div class="text-white max-w-md">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-3">{{ $item['title'] }}</h2>
-                    <p class="text-sm md:text-base">{{ $item['des'] }}</p>
+        <div class="absolute inset-0 transition-all duration-1000 ease-in-out transform {{ $index === 0 ? 'opacity-100 scale-100' : 'opacity-0 scale-95' }}" data-slide="{{ $index }}">
+            <!-- Background Image -->
+            <img src="{{ $item['img'] }}" class="w-full h-full object-cover rounded-3xl" alt="{{ $item['title'] }}">
+
+            <!-- Dark Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80 rounded-3xl flex flex-col items-center justify-center text-center p-6">
+                <div class="max-w-2xl text-white space-y-4">
+                    <h2 class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-purple-400 to-indigo-400 text-transparent bg-clip-text drop-shadow-[0_0_20px_rgba(155,135,255,0.5)]">
+                        {{ $item['title'] }}
+                    </h2>
+                    <p class="text-gray-300 text-lg leading-relaxed">
+                        {{ $item['des'] }}
+                    </p>
                 </div>
             </div>
         </div>
         @endforeach
     </div>
 
-    {{-- Thumbnails --}}
-    <div class="flex justify-center gap-3 mt-4">
-        @foreach($carouselItems as $index => $item)
-        <button class="w-12 h-12 rounded-md overflow-hidden border-2 border-transparent hover:border-blue-500" data-target="{{ $index }}">
-            <img src="{{ $item['img'] }}" class="w-full h-full object-cover" alt="{{ $item['title'] }}">
-        </button>
-        @endforeach
-    </div>
-</div>
 
 {{-- Carousel JS --}}
 <script>
-const slides = document.querySelectorAll('#carousel [data-slide]');
-const buttons = document.querySelectorAll('[data-target]');
-let current = 0;
+document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.querySelectorAll('#carousel [data-slide]');
+    const buttons = document.querySelectorAll('[data-target]');
+    let current = 0;
 
-function showSlide(index) {
-    slides.forEach((slide, i) => {
-        slide.classList.toggle('opacity-100', i === index);
-        slide.classList.toggle('opacity-0', i !== index);
-    });
-    current = index;
-}
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('opacity-100', i === index);
+            slide.classList.toggle('scale-100', i === index);
+            slide.classList.toggle('opacity-0', i !== index);
+            slide.classList.toggle('scale-95', i !== index);
+        });
+        current = index;
+    }
 
-// Auto slide every 5s
-setInterval(() => {
-    let next = (current + 1) % slides.length;
-    showSlide(next);
-}, 5000);
+    // Auto slide every 5 seconds
+    setInterval(() => {
+        const next = (current + 1) % slides.length;
+        showSlide(next);
+    }, 5000);
 
-// Buttons
-buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        showSlide(parseInt(btn.dataset.target));
+    // Thumbnail navigation
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            showSlide(parseInt(btn.dataset.target));
+        });
     });
 });
 </script>

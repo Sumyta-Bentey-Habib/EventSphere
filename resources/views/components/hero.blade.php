@@ -1,59 +1,52 @@
 <div
-  class="hero min-h-screen relative"
-  style="background-image: url('{{ asset('images/banner/hero.jpg') }}');"
+  class="hero min-h-screen relative overflow-hidden bg-black text-white"
+  style="background-image: url('{{ asset('images/banner/hero.jpg') }}'); background-size: cover; background-position: center;"
 >
-  <div class="hero-overlay bg-opacity-50"></div>
-  <div class="hero-content text-neutral-content text-center">
-    <div class="max-w-2xl">
-      <h1 class="mb-5 text-5xl font-bold">
-        <span id="typewriter"></span><span id="cursor" class="text-indigo-400">|</span>
+  <!-- Dark overlay with slight gradient -->
+  <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent"></div>
+
+  <!-- Hero content -->
+  <div class="hero-content relative z-10 flex flex-col lg:flex-row-reverse w-full justify-between py-20 px-6 sm:px-12 lg:px-20">
+
+    <!-- Right Side Image (from background theme concept) -->
+    <div class="w-full lg:w-1/2 flex justify-center">
+      <img
+        src="{{ asset('images/banner/hero.jpg') }}"
+        alt="Event Hero"
+        class="w-full lg:w-4/5 max-w-lg rounded-2xl shadow-2xl border border-[#ffffff20]"
+      />
+    </div>
+
+    <!-- Left Side Text -->
+    <div class="lg:w-1/2 mt-10 lg:mt-0 text-left">
+      <h1 class="text-4xl md:text-6xl font-bold leading-tight">
+        Discover & Book
+        <span class="bg-gradient-to-r from-purple-500 to-indigo-500 text-transparent bg-clip-text">Amazing Events</span>
       </h1>
-      <p class="mb-5 text-lg">
+      <p class="py-6 text-lg md:text-xl max-w-xl text-gray-300">
         From concerts to conferences, EventSphere connects you with the moments that matter.
         Explore, book, and enjoy events around you — all in one place.
       </p>
+      <a
+        href="{{ route('services') }}"
+        class="inline-block text-lg font-semibold px-8 py-3 rounded-xl
+          bg-gradient-to-r from-purple-500 to-indigo-600
+          hover:from-purple-600 hover:to-indigo-700
+          shadow-xl shadow-purple-900/50 transition duration-300"
+      >
+        ✨ Explore Now
+      </a>
     </div>
   </div>
+
+  <!-- Floating chatbot button -->
+  <div class="fixed bottom-8 right-8 z-50 hidden md:block">
+    <button
+      class="p-3 rounded-full bg-gradient-to-r from-[#6C3EF8] to-[#A35CF8]
+      hover:scale-110 focus:outline-none focus:ring-4 focus:ring-purple-500/50
+      shadow-lg transition duration-300"
+    >
+      💬
+    </button>
+  </div>
 </div>
-
-<script>
-  const phrases = ["Discover Amazing Events", "Explore Your Favorite Moments", "Book and Enjoy Events"];
-  const typewriter = document.getElementById('typewriter');
-  const cursor = document.getElementById('cursor');
-
-  let i = 0, j = 0, currentPhrase = [], isDeleting = false, speed = 150; 
-
-  function type() {
-    if (i >= phrases.length) i = 0;
-    const fullText = phrases[i];
-
-    if (isDeleting) {
-      currentPhrase = fullText.substring(0, j--);
-    } else {
-      currentPhrase = fullText.substring(0, j++);
-    }
-
-    typewriter.textContent = currentPhrase;
-
-    if (!isDeleting && j === fullText.length) {
-      isDeleting = true;
-      speed = 100; // pause speed
-      setTimeout(type, 2000); // pause at end before deleting
-    } else if (isDeleting && j === 0) {
-      isDeleting = false;
-      i++;
-      speed = 150;
-      setTimeout(type, 500); // small pause before typing next phrase
-    } else {
-      speed = isDeleting ? 100 : 150;
-      setTimeout(type, speed);
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', type);
-
-  // Blinking cursor
-  setInterval(() => {
-    cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
-  }, 500);
-</script>

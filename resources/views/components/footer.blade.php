@@ -1,62 +1,66 @@
-<footer class="bg-indigo-100 text-gray-800 py-20 relative overflow-hidden">
-    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
+<footer class="bg-gradient-to-b from-[#1E2433] to-[#2B1E4E] text-white pt-16 pb-8 px-6 lg:px-20 relative overflow-hidden">
+  <!-- Newsletter -->
+  @include('components.newsletter')
 
-        <div data-aos="fade-up" data-aos-duration="800">
-            <h3 class="text-3xl font-extrabold mb-4 tracking-wide text-indigo-700">EventSphere</h3>
-            <p class="text-gray-600 mb-6">Your trusted partner for unforgettable events. We bring your vision to life with style and precision.</p>
-            <div class="flex gap-4">
-                <a href="#" class="text-indigo-600 hover:text-indigo-500 transition-all duration-300 transform hover:-translate-y-1 hover:scale-110">
-                    <i data-feather="facebook" class="hover:drop-shadow-lg"></i>
-                </a>
-                <a href="#" class="text-indigo-600 hover:text-indigo-500 transition-all duration-300 transform hover:-translate-y-1 hover:scale-110">
-                    <i data-feather="instagram" class="hover:drop-shadow-lg"></i>
-                </a>
-                <a href="#" class="text-indigo-600 hover:text-indigo-500 transition-all duration-300 transform hover:-translate-y-1 hover:scale-110">
-                    <i data-feather="twitter" class="hover:drop-shadow-lg"></i>
-                </a>
-                <a href="#" class="text-indigo-600 hover:text-indigo-500 transition-all duration-300 transform hover:-translate-y-1 hover:scale-110">
-                    <i data-feather="linkedin" class="hover:drop-shadow-lg"></i>
-                </a>
-            </div>
-        </div>
-
-        {{-- Quick Links --}}
-        <div data-aos="fade-up" data-aos-duration="1000">
-            <h3 class="text-2xl font-bold mb-4 text-indigo-700">Quick Links</h3>
-            <ul class="space-y-3">
-                <li><a href="{{ route('home') }}" class="hover:text-indigo-500 transition-colors duration-300">Home</a></li>
-                <li><a href="{{ route('about') }}" class="hover:text-indigo-500 transition-colors duration-300">About</a></li>
-                <li><a href="{{ route('services') }}" class="hover:text-indigo-500 transition-colors duration-300">Services</a></li>
-                <li><a href="{{ route('contract') }}" class="hover:text-indigo-500 transition-colors duration-300">Contract</a></li>
-            </ul>
-        </div>
-
-        {{-- Contact --}}
-        <div data-aos="fade-up" data-aos-duration="1200">
-            <h3 class="text-2xl font-bold mb-4 text-indigo-700">Get in Touch</h3>
-            <ul class="space-y-3">
-                <li class="flex items-center gap-2">
-                    <i data-feather="mail" class="text-indigo-500"></i>
-                    <a href="mailto:contact@eventsphere.com" class="hover:text-indigo-600 transition-colors duration-300">contact@eventsphere.com</a>
-                </li>
-                <li class="flex items-center gap-2">
-                    <i data-feather="phone" class="text-indigo-500"></i>
-                    <a href="tel:+15551234567" class="hover:text-indigo-600 transition-colors duration-300">+1 (555) 123-4567</a>
-                </li>
-                <li class="flex items-start gap-2">
-                    <i data-feather="map-pin" class="mt-1 text-indigo-500"></i>
-                    <span>123 Event Lane, Suite 400,<br>City, State 10001</span>
-                </li>
-            </ul>
-        </div>
-
+  <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 mb-12">
+    <!-- Contact Info -->
+    <div>
+      <h3 class="font-semibold text-lg mb-3">Got Questions? Call us!</h3>
+      <p class="text-gray-400 text-sm mb-4">
+        123 Event Lane, Suite 400, City, State 10001
+      </p>
+      <p class="flex items-center gap-2 text-gray-300 text-sm mb-2">
+        <i data-feather="phone" class="w-4 h-4 text-indigo-400"></i>
+        +15551234567
+      </p>
+      <p class="flex items-center gap-2 text-gray-300 text-sm mb-4">
+        <i data-feather="mail" class="w-4 h-4 text-indigo-400"></i>
+      contact@eventsphere.com
+      </p>
     </div>
 
-    <div class="mt-12 text-center text-gray-500 border-t border-indigo-200 pt-6">
-        &copy; {{ date('Y') }} EventSphere. All rights reserved.
+    <!-- Company -->
+    <div>
+      <h4 class="font-semibold text-md mb-3 text-indigo-300">Company</h4>
+      <ul class="space-y-2 text-gray-400 text-sm">
+        <li><a href="{{ route('home') }}" class="hover:text-indigo-400 transition">Home</a></li>
+        <li><a href="{{ route('about') }}" class="hover:text-indigo-400 transition">About Us</a></li>
+        <li><a href="{{ route('services') }}" class="hover:text-indigo-400 transition">Our Team</a></li>
+        <li><a href="{{ route('contract') }}" class="hover:text-indigo-400 transition">Contact</a></li>
+      </ul>
     </div>
 
-    <script>
-        feather.replace();
-    </script>
+    <!-- Support -->
+    <div>
+      <h4 class="font-semibold text-md mb-3 text-indigo-300">Support</h4>
+      <ul class="space-y-2 text-gray-400 text-sm">
+        <li><a href="#" class="hover:text-indigo-400 transition">Help Center</a></li>
+        <li><a href="#" class="hover:text-indigo-400 transition">Privacy Policy</a></li>
+        <li><a href="#" class="hover:text-indigo-400 transition">Terms & Conditions</a></li>
+      </ul>
+    </div>
+
+    <!-- Services -->
+    <div>
+      <h4 class="font-semibold text-md mb-3 text-indigo-300">Services</h4>
+      <ul class="space-y-2 text-gray-400 text-sm">
+        <li>Event Management</li>
+        <li>Venue Booking</li>
+        <li>Digital Marketing</li>
+        <li>Ticketing & Promotion</li>
+      </ul>
+    </div>
+
+
+
+
+
+  <!-- Bottom Bar -->
+  <div class="text-center text-gray-500 text-xs mt-6 border-t border-white/10 pt-4">
+    &copy; {{ date('Y') }} EventSphere. All Rights Reserved.
+  </div>
+
+  <script>
+    feather.replace();
+  </script>
 </footer>

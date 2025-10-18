@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use App\Models\User;
+use App\Models\Event;
 
 class AuthController extends Controller
 {
@@ -59,10 +60,6 @@ class AuthController extends Controller
         return redirect('/');
     }
 
-    public function dashboard() {
-        return view('dashboard');
-    }
-
     // Forgot Password
     public function showForgot() {
         return view('auth.forgot');
@@ -102,5 +99,23 @@ class AuthController extends Controller
         return $status == Password::PASSWORD_RESET
             ? redirect('/login')->with('success', 'Password reset successful!')
             : back()->with('error', 'Something went wrong.');
+    }
+
+    // Dashboard
+    public function dashboard()
+    {
+        $user = auth()->user();
+
+        // 1. Browse events (eager load creator)
+        $events = Event::with('user')->latest()->take(6)->get();
+
+        // 2. Bookmarked events (eager load creator)
+        $bookmarkedEvents = $user->bookmarks()->with('user')->get();
+
+        // 3. Array of bookmarked event IDs for Blade button toggle
+        // This is correctly fetching the IDs for efficient checking in the browse section.
+        $userBookmarks = $user->bookmarks()->pluck('events.id')->toArray();
+
+        return view('dashboard', compact('events', 'bookmarkedEvents', 'userBookmarks'));
     }
 }

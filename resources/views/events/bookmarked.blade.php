@@ -1,41 +1,46 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="w-full max-w-6xl mx-auto">
-    <div class="text-center mb-8">
-        <h1 class="text-3xl font-bold mb-2">Bookmarked Events</h1>
-        <p class="text-gray-500">Events you have saved for later.</p>
-    </div>
+<div id="section-bookmarked" class="p-8 rounded-2xl mb-8 bg-white shadow-2xl transition-all duration-300">
+    <h2 class="text-3xl font-bold text-indigo-700 mb-6 border-b pb-3">Bookmarked Events</h2>
 
     @if($bookmarkedEvents->count() > 0)
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @foreach ($bookmarkedEvents as $event)
-            <div class="card bg-base-100 shadow-md hover:shadow-lg transition">
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl overflow-hidden border border-gray-100 transition duration-300">
                 @if($event->image)
-                    <img src="{{ asset('storage/' . $event->image) }}" alt="{{ $event->title }}" class="rounded-t-lg h-48 w-full object-cover">
+                    <img src="{{ asset('storage/' . $event->image) }}" alt="{{ $event->title }}" class="h-48 w-full object-cover">
                 @endif
-                <div class="card-body">
-                    <h3 class="text-xl font-semibold">{{ $event->title }}</h3>
-                    <p class="text-gray-500">{{ $event->description }}</p>
-                    <p class="text-sm text-gray-400 mt-2"><i class="fas fa-clock"></i> {{ \Carbon\Carbon::parse($event->event_time)->format('M d, Y h:i A') }}</p>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">{{ $event->title }}</h3>
+                    <p class="text-gray-600 mb-2">{{ $event->description }}</p>
+                    <p class="text-sm text-gray-400 mb-4"><i class="fas fa-clock"></i> {{ \Carbon\Carbon::parse($event->event_time)->format('M d, Y h:i A') }}</p>
 
-                    <div class="card-actions justify-between mt-3">
-                        <form action="{{ route('events.bookmark', $event->id) }}" method="POST">
-                            @csrf
-                            <button type="submit" class="btn btn-sm btn-error">
+                    <form action="{{ route('events.bookmark', $event->id) }}" method="POST" class="mt-4">
+                        @csrf
+                        <button type="submit" class="btn btn-sm w-full
+                            @if(in_array($event->id, Auth::user()->bookmarks()->pluck('id')->toArray()))
+                                bg-red-600 border-red-600 text-white hover:bg-red-700 hover:border-red-700
+                            @else
+                                btn-outline text-indigo-500 hover:bg-indigo-50
+                            @endif
+                        ">
+                            @if(in_array($event->id, Auth::user()->bookmarks()->pluck('id')->toArray()))
                                 <i class="fas fa-trash"></i> Remove
-                            </button>
-                        </form>
-                        <span class="text-sm text-gray-400">By {{ $event->user->name }}</span>
-                    </div>
+                            @else
+                                <i class="far fa-bookmark"></i> Bookmark
+                            @endif
+                        </button>
+                    </form>
+
+                    <span class="text-sm text-gray-400 mt-2 block">By {{ $event->user->name }}</span>
                 </div>
             </div>
             @endforeach
         </div>
     @else
-        <p class="text-center text-gray-400 mt-6">You have no bookmarked events yet.</p>
+        <p class="text-center text-gray-500 mt-6 text-lg">
+            No Bookmarks Yet!<br>
+            Click the <span class="font-semibold">Bookmark</span> button on events in the <span class="font-semibold">Browse Events</span> section to save them here.
+        </p>
     @endif
 </div>
 
 <script src="https://kit.fontawesome.com/a2e0e9c6b4.js" crossorigin="anonymous"></script>
-@endsection

@@ -6,32 +6,32 @@
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body class="flex justify-center items-center h-screen bg-base-200">
-  <div class="card w-96 bg-base-100 shadow-xl">
+<body class="flex justify-center items-center h-screen bg-[#170E28] text-gray-200">
+  <div class="card w-96 bg-[#2A3142] shadow-2xl border border-white/10">
     <div class="card-body">
-      <h2 class="card-title text-center">Login</h2>
-      @if(session('error')) <div class="alert alert-error">{{ session('error') }}</div> @endif
-      @if(session('success')) <div class="alert alert-success">{{ session('success') }}</div> @endif
+      <h2 class="text-3xl font-bold mb-4 text-center bg-gradient-to-r from-purple-400 to-indigo-400 text-transparent bg-clip-text">Login</h2>
+      @if(session('error')) <div class="alert alert-error bg-red-800/20 text-red-300 border-red-500/50">{{ session('error') }}</div> @endif
+      @if(session('success')) <div class="alert alert-success bg-green-800/20 text-green-300 border-green-500/50">{{ session('success') }}</div> @endif
 
       <form method="POST" action="/login">
         @csrf
         <div class="form-control">
-          <label class="label">Email</label>
-          <input type="email" name="email" class="input input-bordered" required />
+          <label class="label"><span class="label-text text-gray-300">Email</span></label>
+          <input type="email" name="email" class="input input-bordered bg-[#170E28] border-white/20 text-white placeholder-gray-500" required />
         </div>
         <div class="form-control">
-          <label class="label">Password</label>
-          <input type="password" name="password" class="input input-bordered" required />
+          <label class="label"><span class="label-text text-gray-300">Password</span></label>
+          <input type="password" name="password" class="input input-bordered bg-[#170E28] border-white/20 text-white placeholder-gray-500" required />
         </div>
         <div class="form-control mt-2">
           <label class="cursor-pointer label">
-            <span class="label-text">Remember me</span>
-            <input type="checkbox" name="remember" class="checkbox" />
+            <span class="label-text text-gray-400">Remember me</span>
+            <input type="checkbox" name="remember" class="checkbox border-white/20 checked:bg-indigo-600" />
           </label>
         </div>
-        <button class="btn btn-primary mt-4 w-full">Login</button>
-        <p class="text-center mt-2"><a href="{{ route('forgot') }}" class="link link-primary">Forgot password?</a></p>
-        <p class="text-center mt-2">Don't have an account? <a href="{{ route('register') }}" class="link link-primary">Register</a></p>
+        <button class="btn btn-primary mt-6 w-full bg-gradient-to-r from-purple-600 to-indigo-700 border-none text-white hover:opacity-90">Login</button>
+        <p class="text-center mt-4 text-sm"><a href="{{ route('forgot') }}" class="text-indigo-400 hover:text-indigo-300 transition">Forgot password?</a></p>
+        <p class="text-center mt-2 text-sm">Don't have an account? <a href="{{ route('register') }}" class="text-indigo-400 hover:text-indigo-300 transition">Register</a></p>
       </form>
     </div>
   </div>

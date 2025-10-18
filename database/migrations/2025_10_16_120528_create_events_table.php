@@ -12,7 +12,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('title');
-            $table->string('location');
             $table->text('description');
             $table->string('image')->nullable();
             $table->dateTime('event_time');

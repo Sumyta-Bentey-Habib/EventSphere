@@ -41,8 +41,12 @@ class EventController extends Controller
     public function bookmark($id)
     {
         $event = Event::findOrFail($id);
-        Auth::user()->bookmarks()->toggle($event);
-        return back()->with('success', 'Bookmark updated!');
+
+        $user = Auth::user();
+        // This is the core logic and it is correct for toggling bookmarks.
+        $user->bookmarks()->toggle($event->id);
+
+        return redirect()->back()->with('success', 'Bookmark updated!');
     }
 
     public function bookmarked()
